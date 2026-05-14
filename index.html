@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Career Chat with Mariam</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --ink: #1A1814;
+    --muted: #6B6560;
+    --accent: #1D6B5A;
+    --accent-light: #E3F0ED;
+    --border: #E2DDD6;
+    --card-bg: #FFFFFF;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 6vw, 52px);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 20px;
+    max-width: 520px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 36px;
+    line-height: 1.65;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .avatar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .avatar-info p {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .avatar-info span {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .price-pill {
+    margin-left: auto;
+    text-align: right;
+  }
+  .price-pill .amount {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .price-pill .per {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ── WHAT YOU GET ── */
+  .section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .topic-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .topic-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .topic-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .topic-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── SESSION OPTIONS ── */
+  .sessions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .session-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .session-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
+  .session-card.featured {
+    border-color: var(--accent);
+    background: var(--accent-light);
+  }
+
+  .session-card.featured .badge {
+    display: inline-block;
+  }
+
+  .badge {
+    display: none;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 100px;
+    margin-bottom: 4px;
+  }
+
+  .session-left h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+
+  .session-left p {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .session-right {
+    text-align: right;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+
+  .session-right .price {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .session-right .book-btn {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    background: #fff;
+    border: 1px solid var(--accent);
+    border-radius: 100px;
+    padding: 4px 12px;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .session-card:hover .book-btn,
+  .session-card.featured .book-btn {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* ── EXPECTATIONS ── */
+  .expectations {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .exp-row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .exp-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+  }
+
+  .exp-icon.yes { background: var(--accent-light); }
+  .exp-icon.no  { background: #FEF0EE; }
+
+  .exp-row p {
+    font-size: 14px;
+    color: var(--ink);
+    padding-top: 6px;
+    line-height: 1.5;
+  }
+
+  .exp-row p strong {
+    font-weight: 500;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 40px 0;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  @media (max-width: 480px) {
+    .topics-grid { grid-template-columns: 1fr; }
+    .hero-meta { flex-direction: column; align-items: flex-start; }
+    .price-pill { margin-left: 0; text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="eyebrow">Book a session</span>
+    <h1>Let's talk about your <em>career in data.</em></h1>
+    <p class="hero-sub">
+      One-on-one sessions for students and early-career professionals looking to break into data analytics, data science, or finance. Real talk, focused time, no fluff.
+    </p>
+    <div class="hero-meta">
+      <div class="avatar-row">
+        <div class="avatar">M</div>
+        <div class="avatar-info">
+          <p>Mariam</p>
+          <span>Data Analyst · RBC · Toronto</span>
+        </div>
+      </div>
+      <div class="price-pill">
+        <div class="amount">$10 CAD</div>
+        <div class="per">paid at booking</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE COVER -->
+  <section class="section">
+    <p class="section-label">What we can cover</p>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <span class="topic-icon">📄</span>
+        <h3>Resume review</h3>
+        <p>Feedback on how your resume reads for data and analytics roles</p>
+      </div>
+      <div class="topic-card">
+        <span class="topic-icon">🧭</span>
+        <h3>Career direction</h3>
+        <p>Navigating paths in data science, analytics, ML engineering, or finance</p>
+      </div>
+      <div class="topic-card">
+        <span class="topic-icon">🔍</span>
+        <h3>Breaking in</h3>
+        <p>How to land your first role as an international student or new grad</p>
+      </div>
+      <div class="topic-card">
+        <span class="topic-icon">💼</span>
+        <h3>Interview prep</h3>
+        <p>Behavioural, technical, and case prep for analytics and finance roles</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SESSION OPTIONS -->
+  <section class="section">
+    <p class="section-label">Pick a session length</p>
+    <div class="sessions">
+
+      <div class="session-card">
+        <div class="session-left">
+          <h3>Quick chat — 30 min</h3>
+          <p>One focused topic: resume, LinkedIn, or a specific question</p>
+        </div>
+        <div class="session-right">
+          <div class="price">$10</div>
+          <a class="book-btn" href="https://cal.com" target="_blank">Book →</a>
+        </div>
+      </div>
+
+      <div class="session-card featured">
+        <div class="session-left">
+          <span class="badge">Most popular</span>
+          <h3>Full session — 60 min</h3>
+          <p>Deep dive: resume + strategy + Q&A, or mock interview</p>
+        </div>
+        <div class="session-right">
+          <div class="price">$10</div>
+          <a class="book-btn" href="https://cal.com" target="_blank">Book →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HONEST EXPECTATIONS -->
+  <section class="section">
+    <p class="section-label">Good to know before you book</p>
+    <div class="expectations">
+      <div class="exp-row">
+        <div class="exp-icon yes">✓</div>
+        <p><strong>This is a working session.</strong> Come with specific questions, a resume draft, or a goal — the more prepared you are, the more we'll get done.</p>
+      </div>
+      <div class="exp-row">
+        <div class="exp-icon yes">✓</div>
+        <p><strong>You'll get honest, actionable feedback.</strong> Based on what I've seen hiring managers respond to, not generic advice.</p>
+      </div>
+      <div class="exp-row">
+        <div class="exp-icon no">✗</div>
+        <p><strong>This is not a referral service.</strong> I can't put your resume forward or guarantee any job outcome — that's not what this is.</p>
+      </div>
+      <div class="exp-row">
+        <div class="exp-icon no">✗</div>
+        <p><strong>Payment confirms your spot.</strong> The $10 is non-refundable if you cancel within 24 hours — it's how we both stay accountable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Questions? Message me on <a href="https://linkedin.com" target="_blank">LinkedIn</a> before booking.</p>
+    <p style="margin-top: 8px;">Toronto, ON · Sessions via Google Meet or Zoom</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
